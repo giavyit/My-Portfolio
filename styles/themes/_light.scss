@@ -1,0 +1,36 @@
+// Light Theme
+:root {
+  --background: #09090b;
+  --foreground: #fafafa;
+  --card: #18181b;
+  --card-foreground: #e4e4e7;
+  --popover: #18181b;
+  --popover-foreground: #fafafa;
+  --primary: #06b6d4;
+  --primary-foreground: #09090b;
+  --secondary: #10b981;
+  --secondary-foreground: #09090b;
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+  --accent: #27272a;
+  --accent-foreground: #fafafa;
+  --destructive: #ef4444;
+  --destructive-foreground: #f87171;
+  --border: #27272a;
+  --input: #27272a;
+  --ring: #06b6d4;
+  --chart-1: oklch(0.811 0.111 293.571);
+  --chart-2: oklch(0.606 0.25 292.717);
+  --chart-3: oklch(0.541 0.281 293.009);
+  --chart-4: oklch(0.491 0.27 292.581);
+  --chart-5: oklch(0.432 0.232 292.759);
+  --radius: 10px;
+  --sidebar: #18181b;
+  --sidebar-foreground: #e4e4e7;
+  --sidebar-primary: #06b6d4;
+  --sidebar-primary-foreground: #09090b;
+  --sidebar-accent: #27272a;
+  --sidebar-accent-foreground: #fafafa;
+  --sidebar-border: #27272a;
+  --sidebar-ring: #06b6d4;
+}

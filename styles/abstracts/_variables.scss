@@ -1,0 +1,48 @@
+// Dark Engineering Variables
+
+// Colors
+$surface: #0d1515;
+$surface-dim: #0d1515;
+$surface-bright: #323b3b;
+$surface-container-lowest: #081010;
+$surface-container-low: #151d1d;
+$surface-container: #192121;
+$surface-container-high: #232b2c;
+$surface-container-highest: #2e3637;
+$on-surface: #dce4e4;
+$on-surface-variant: #b9caca;
+$inverse-surface: #dce4e4;
+$inverse-on-surface: #2a3232;
+$outline: #849495;
+$outline-variant: #3a494a;
+$surface-tint: #00dce5;
+$primary: #e9feff;
+$on-primary: #003739;
+$primary-container: #00f5ff;
+$on-primary-container: #006c71;
+$inverse-primary: #00696e;
+$secondary: #bbc3ff;
+$on-secondary: #001d93;
+$secondary-container: #0231de;
+$on-secondary-container: #b1bbff;
+$tertiary: #fff9f0;
+$on-tertiary: #3a3000;
+$tertiary-container: #ffdb3f;
+$on-tertiary-container: #736000;
+$error: #ffb4ab;
+$on-error: #690005;
+$error-container: #93000a;
+$on-error-container: #ffdad6;
+$background: #0d1515;
+$on-background: #dce4e4;
+
+// Typography
+$font-sans: 'Geist Sans', sans-serif;
+$font-mono: 'JetBrains Mono', monospace;
+
+// Spacing
+$spacing-unit: 4px;
+$spacing-gutter: 24px;
+$margin-mobile: 16px;
+$margin-desktop: 64px;
+$max-width: 1280px;

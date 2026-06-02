@@ -1,1 +1,221 @@
-// Cards Component
+// Cards and Layout Component for Bento Portfolio
+
+.bento-container {
+  @apply min-h-screen bg-[#070708] text-[#e4e4e7] font-sans antialiased py-10 px-4 sm:px-6 lg:px-8 selection:bg-purple-500/30 selection:text-white;
+}
+
+.bento-wrapper {
+  @apply max-w-[1440px] mx-auto;
+}
+
+.bento-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-24 gap-5;
+}
+
+.bento-col-1 {
+  @apply md:col-span-1 xl:col-span-6 flex flex-col gap-5;
+}
+
+.bento-col-2 {
+  @apply md:col-span-1 xl:col-span-8 flex flex-col gap-5;
+}
+
+.bento-col-3 {
+  @apply md:col-span-1 xl:col-span-5 flex flex-col gap-5;
+}
+
+.bento-col-4 {
+  @apply md:col-span-1 xl:col-span-5 flex flex-col gap-5;
+}
+
+.bento-card {
+  @apply bg-[#0b0b0c] border border-zinc-900 rounded-3xl p-6 flex flex-col gap-5 hover:border-zinc-800 transition-all duration-300 shadow-md;
+}
+
+.bento-card-interactive {
+  @apply bg-[#0b0b0c] border border-zinc-900 rounded-3xl p-6 flex flex-col justify-between hover:border-zinc-800 transition-all duration-300 shadow-md;
+}
+
+.bento-card-title-row {
+  @apply flex items-center gap-2;
+}
+
+.bento-card-icon-wrapper {
+  @apply p-2 rounded-xl bg-purple-500/10 text-purple-400 shrink-0;
+}
+
+.bento-card-subtitle {
+  @apply font-mono text-xs sm:text-sm uppercase tracking-wider text-purple-400 font-bold;
+}
+
+.bento-card-title {
+  @apply text-2xl sm:text-3xl font-extrabold text-white tracking-tight;
+}
+
+.bento-tech-grid {
+  @apply grid grid-cols-2 gap-3;
+}
+
+.bento-stack-item {
+  @apply flex items-center gap-2.5 px-4 py-3 bg-[#111112] border border-zinc-900/60 rounded-2xl group-hover:border-zinc-800/80 transition-colors;
+}
+
+.bento-tech-text {
+  @apply font-sans text-sm font-semibold text-zinc-300;
+}
+
+.bento-services-container {
+  @apply flex flex-wrap gap-2.5 py-2;
+}
+
+.bento-service-tag {
+  @apply px-4 py-2 bg-[#111112] border border-zinc-900 text-xs sm:text-sm font-bold text-zinc-200 rounded-full hover:border-purple-500/30 transition-colors;
+}
+
+.bento-btn-primary {
+  @apply px-8 py-3 bg-purple-500 hover:bg-purple-600 text-white font-sans text-sm font-bold rounded-full transition-all duration-300 shadow-md shadow-purple-500/20 active:scale-95 text-center;
+}
+
+.bento-stat-card {
+  @apply bg-[#0b0b0c] border border-zinc-900 rounded-3xl p-5 flex flex-col gap-2 hover:border-zinc-800 transition-all duration-300;
+}
+
+.bento-stat-num {
+  @apply font-mono text-4xl font-extrabold text-white tracking-tight;
+}
+
+.bento-stat-label {
+  @apply flex items-center gap-1.5 font-mono text-xs text-purple-400 font-bold uppercase tracking-wider;
+}
+
+.bento-badge-available {
+  @apply flex items-center gap-1.5 px-3 py-1 rounded-full border border-emerald-950/40 bg-emerald-950/20;
+}
+
+.bento-badge-text {
+  @apply font-mono text-xs text-emerald-400 font-bold uppercase tracking-wider;
+}
+
+.bento-btn-resume {
+  @apply flex items-center gap-2 px-4 py-1.5 bg-[#111112] border border-zinc-900 hover:border-purple-500/40 text-[#e4e4e7] hover:text-purple-400 rounded-xl font-mono text-xs transition-all duration-300 shadow-sm font-bold;
+}
+
+.bento-profile-avatar-outer {
+  @apply relative w-28 h-28 rounded-3xl bg-[#7c3aed] p-[3px] shadow-lg shrink-0;
+}
+
+.bento-profile-avatar-inner {
+  @apply w-full h-full rounded-[20px] overflow-hidden relative;
+}
+
+.bento-profile-text {
+  @apply space-y-1.5;
+}
+
+.bento-profile-name {
+  @apply text-4xl font-extrabold text-white tracking-tight;
+}
+
+.bento-profile-role {
+  @apply text-base text-zinc-400 font-sans;
+}
+
+.bento-text-highlight {
+  @apply text-purple-400 font-bold;
+}
+
+.bento-profile-tags {
+  @apply flex flex-wrap gap-2.5 z-10;
+}
+
+.bento-info-tag {
+  @apply px-4 py-2 bg-[#111112] border border-zinc-900/60 rounded-xl font-mono text-xs text-zinc-300 font-bold flex items-center gap-2;
+}
+
+.bento-profile-actions {
+  @apply grid grid-cols-2 gap-3 mt-1 z-10;
+}
+
+.bento-social-link {
+  @apply py-3 bg-[#111112] hover:bg-[#19191c] border border-zinc-900 hover:border-purple-500/40 text-sm text-zinc-200 font-bold rounded-2xl transition-all duration-300 shadow-sm flex items-center justify-center gap-2;
+}
+
+.bento-partners-grid {
+  @apply grid grid-cols-2 sm:grid-cols-4 gap-3;
+}
+
+.bento-partner-item {
+  @apply flex items-center justify-center py-3.5 px-2 bg-[#111112] border border-zinc-900/60 rounded-2xl transition-colors duration-300 cursor-pointer font-sans text-xs sm:text-sm font-bold text-zinc-400 hover:bg-[#151517] hover:border-zinc-800 text-center truncate;
+}
+
+.bento-projects-container {
+  @apply flex flex-col gap-2.5;
+}
+
+.bento-project-link {
+  @apply flex items-center justify-between p-3.5 bg-[#111112] hover:bg-[#151517] border border-zinc-900 hover:border-purple-500/30 rounded-2xl transition-all duration-300 cursor-pointer;
+}
+
+.bento-project-meta {
+  @apply flex items-center gap-3 min-w-0;
+}
+
+.bento-project-idx {
+  @apply w-6.5 h-6.5 rounded-lg bg-zinc-950 border border-zinc-900 font-mono text-xs text-purple-400 font-extrabold flex items-center justify-center shrink-0;
+}
+
+.bento-project-title {
+  @apply font-sans text-xs sm:text-sm font-extrabold text-zinc-200 group-hover/item:text-white transition-colors truncate;
+}
+
+.bento-project-tech {
+  @apply font-mono text-[10px] text-zinc-500 mt-0.5 truncate;
+}
+
+.bento-project-arrow {
+  @apply text-zinc-600 group-hover/item:text-purple-400 group-hover/item:translate-x-0.5 transition-all text-sm font-bold shrink-0 ml-1;
+}
+
+.bento-presence-container {
+  @apply flex flex-col gap-2;
+}
+
+.bento-presence-link {
+  @apply flex items-center justify-between p-3.5 bg-[#111112] hover:bg-[#151517] border border-zinc-900 hover:border-purple-500/30 rounded-2xl transition-all duration-300;
+}
+
+.bento-presence-meta {
+  @apply flex items-center gap-2.5;
+}
+
+.bento-presence-badge {
+  @apply font-mono text-[10px] uppercase text-zinc-500 font-bold bg-zinc-950 px-2 py-0.5 rounded border border-zinc-900 group-hover/social:text-purple-400 transition-colors;
+}
+
+.bento-presence-id {
+  @apply font-mono text-xs sm:text-sm font-bold text-zinc-300 group-hover/social:text-white transition-colors;
+}
+
+.bento-presence-arrow {
+  @apply text-zinc-500 group-hover/social:text-purple-400 group-hover/social:translate-x-0.5 transition-all text-sm font-bold;
+}
+
+.bento-work-card {
+  @apply bg-[#0b0b0c] border border-zinc-900 rounded-3xl p-6 flex flex-col justify-between items-center text-center gap-6 hover:border-zinc-800 transition-all duration-300 shadow-md min-h-[200px] relative overflow-hidden;
+}
+
+.bento-crown-wrapper {
+  @apply p-3.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 shrink-0 mt-2 z-10;
+}
+
+.bento-work-actions {
+  @apply w-full space-y-2 z-10;
+}
+
+.bento-btn-work-primary {
+  @apply w-full py-3 bg-purple-500 hover:bg-purple-600 text-white font-sans text-sm font-bold rounded-2xl transition-all duration-300 shadow-md shadow-purple-500/10 active:scale-[0.98] flex items-center justify-center gap-2;
+}
+
+.bento-btn-work-secondary {
+  @apply w-full py-3 bg-[#111112] hover:bg-[#151517] border border-zinc-900 hover:border-purple-500/40 text-sm text-zinc-300 font-bold rounded-2xl transition-all duration-300 shadow-sm flex items-center justify-center gap-2 active:scale-[0.98];
+}

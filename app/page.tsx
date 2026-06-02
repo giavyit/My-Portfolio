@@ -1,5 +1,5 @@
 import BentoPortfolio from "@/components/organisms/bento-portfolio";
 
-export default function HomePage() {
+export default function RootPage() {
   return <BentoPortfolio />;
 }

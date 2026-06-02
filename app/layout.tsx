@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
-// Bỏ qua tải font từ Google do lỗi mạng
-// import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.scss";
 import { cn } from "@/lib/utils";
-
-// Components
-import Header from "@/components/layouts/header";
-import Footer from "@/components/layouts/footer";
 
 const interVariable = "--font-sans";
 const geistSansVariable = "--font-geist-sans";
@@ -36,11 +30,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        <Header />
-
         <main className="flex-1 z-0">{children}</main>
-
-        <Footer />
       </body>
     </html>
   );

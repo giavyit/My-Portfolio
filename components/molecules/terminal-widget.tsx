@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect, useCallback } from "react";
 import { cn } from "@/lib/utils";
 
 interface HistoryLine {
+  id: string;
   text: string;
   type: "input" | "output" | "error" | "info";
 }
@@ -12,11 +13,13 @@ export interface TerminalWidgetProps {
   className?: string;
 }
 
+const generateId = (): string => Math.random().toString(36).substring(2, 9);
+
 export function TerminalWidget({ className }: Readonly<TerminalWidgetProps>) {
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<HistoryLine[]>([
-    { text: "DOAN GIA VY // SYSTEM TERMINAL ACTIVE", type: "info" },
-    { text: "Type 'help' for a list of available commands.", type: "info" },
+    { id: generateId(), text: "DOAN GIA VY // SYSTEM TERMINAL ACTIVE", type: "info" },
+    { id: generateId(), text: "Type 'help' for a list of available commands.", type: "info" },
   ]);
 
   const terminalEndRef = useRef<HTMLDivElement>(null);
@@ -34,26 +37,28 @@ export function TerminalWidget({ className }: Readonly<TerminalWidgetProps>) {
     const trimmedCmd = cmd.trim().toLowerCase();
 
     setHistory((prev) => {
-      const newHistory: HistoryLine[] = [...prev, { text: `vy-system:~$ ${cmd}`, type: "input" }];
+      const newHistory: HistoryLine[] = [...prev, { id: generateId(), text: `vy-system:~$ ${cmd}`, type: "input" }];
 
       if (trimmedCmd === "") {
         return newHistory;
       }
 
+      const appendLines = (lines: Omit<HistoryLine, "id">[]): HistoryLine[] => {
+        return [...newHistory, ...lines.map(line => ({ ...line, id: generateId() }))];
+      };
+
       switch (trimmedCmd) {
         case "help":
-          return [
-            ...newHistory,
+          return appendLines([
             { text: "Available commands:", type: "info" },
             { text: "  about    - Brief profile summary", type: "output" },
             { text: "  skills   - Core technical skills matrix", type: "output" },
             { text: "  projects - Key enterprise case studies", type: "output" },
             { text: "  contact  - Direct contact coordinates", type: "output" },
             { text: "  clear    - Clear console session logs", type: "output" },
-          ];
+          ]);
         case "about":
-          return [
-            ...newHistory,
+          return appendLines([
             { text: "Doãn Gia Vỹ - Senior Frontend Engineer", type: "info" },
             {
               text: "7+ years experience in high-performance web architectures, geospatial 3D engines, and responsive enterprise dashboards.",
@@ -63,10 +68,9 @@ export function TerminalWidget({ className }: Readonly<TerminalWidgetProps>) {
               text: "Currently engineering high-fidelity web ecosystems & spatial digital twin dashboards.",
               type: "output",
             },
-          ];
+          ]);
         case "skills":
-          return [
-            ...newHistory,
+          return appendLines([
             { text: "Core Tech Matrix:", type: "info" },
             {
               text: "  • Frontend: ReactJS, Next.js, Vue 3, TypeScript, Tailwind, MobX",
@@ -81,10 +85,9 @@ export function TerminalWidget({ className }: Readonly<TerminalWidgetProps>) {
               text: "  • Tools & Infra: Turbopack, Vitest, Docker, Git, Azure DevOps",
               type: "output",
             },
-          ];
+          ]);
         case "projects":
-          return [
-            ...newHistory,
+          return appendLines([
             { text: "Active Enterprise Deployments:", type: "info" },
             { text: "  1. National Digital Twin 15 (Present) - CesiumJS, WebGL2", type: "output" },
             {
@@ -99,28 +102,26 @@ export function TerminalWidget({ className }: Readonly<TerminalWidgetProps>) {
               text: "     High-performance title legal services system covering 90% US counties.",
               type: "output",
             },
-          ];
+          ]);
         case "contact":
-          return [
-            ...newHistory,
+          return appendLines([
             { text: "Direct Coordinates:", type: "info" },
             { text: "  • Email: giavy.it@gmail.com", type: "output" },
             { text: "  • Phone: 0559893935", type: "output" },
             { text: "  • Location: District 9, Ho Chi Minh City, VN", type: "output" },
             { text: "  • LinkedIn: linkedin.com/in/doangiavy", type: "output" },
-          ];
+          ]);
         case "clear":
           return [];
         default:
-          return [
-            ...newHistory,
+          return appendLines([
             { text: `bash: command not found: ${cmd}. Type 'help' for options.`, type: "error" },
-          ];
+          ]);
       }
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     handleCommand(input);
     setInput("");
@@ -130,45 +131,51 @@ export function TerminalWidget({ className }: Readonly<TerminalWidgetProps>) {
     inputRef.current?.focus();
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      focusInput();
+    }
+  };
+
   const isMini = !!(className?.includes("h-[80px]") || className?.includes("h-20"));
+
+  const getLineColor = (type: HistoryLine["type"]) => {
+    switch (type) {
+      case "input": return "text-zinc-200";
+      case "error": return "text-red-400";
+      case "info": return "text-purple-400 font-semibold";
+      default: return "text-zinc-400";
+    }
+  };
 
   return (
     <div
       className={cn(
-        "w-full flex flex-col font-mono bg-zinc-950/80 border border-zinc-800/80 rounded-3xl p-5 relative overflow-hidden group hover:border-zinc-700/80 transition-all duration-300 justify-center",
+        "terminal-widget-container group",
         !isMini && "justify-between",
         className || "h-full min-h-[420px]",
       )}
       onClick={focusInput}
-      role="button"
-      tabIndex={0}
+      onKeyDown={handleKeyDown}
     >
       {/* Terminal Title Header */}
       {!isMini && (
-        <div className="flex justify-between items-center pb-2 border-b border-zinc-900 text-[10px] text-zinc-500 uppercase tracking-wider">
+        <div className="terminal-header">
           <span>[ vy-ecosystem-terminal.sh ]</span>
           <span className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse" />
-            ONLINE
+            <span className="terminal-status-dot" />
+            {"ONLINE"}
           </span>
         </div>
       )}
 
       {/* Output Console Logs */}
       {!isMini && (
-        <div className="flex-1 overflow-y-auto text-[13px] space-y-1.5 py-3 pr-1 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
-          {history.map((line, idx) => (
+        <div className="terminal-body">
+          {history.map((line) => (
             <div
-              key={idx}
-              className={
-                line.type === "input"
-                  ? "text-zinc-200"
-                  : line.type === "error"
-                    ? "text-red-400"
-                    : line.type === "info"
-                      ? "text-purple-400 font-semibold"
-                      : "text-zinc-400"
-              }
+              key={line.id}
+              className={getLineColor(line.type)}
             >
               {line.text}
             </div>
@@ -191,7 +198,7 @@ export function TerminalWidget({ className }: Readonly<TerminalWidgetProps>) {
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          className="flex-1 bg-transparent border-none outline-none text-zinc-200 caret-transparent font-mono p-0 focus:ring-0 text-[13px]"
+          className="terminal-input-field"
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="none"
@@ -199,7 +206,7 @@ export function TerminalWidget({ className }: Readonly<TerminalWidgetProps>) {
         />
         {/* Customized Blinking Caret */}
         <span
-          className="inline-block w-1.5 h-4 bg-purple-500 animate-blink"
+          className="terminal-caret"
           style={{ transform: "translateY(1px)" }}
         />
       </form>

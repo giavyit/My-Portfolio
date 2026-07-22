@@ -1,0 +1,26 @@
+/* --- Terminal Widget Extracted Classes --- */
+.terminal-widget-container {
+  @apply w-full flex flex-col font-mono bg-zinc-950/80 border border-zinc-800/80 rounded-3xl p-5 relative overflow-hidden transition-all duration-300 justify-center;
+  @variant hover {
+    @apply border-zinc-700/80;
+  }
+}
+.terminal-header {
+  @apply flex justify-between items-center pb-2 border-b border-zinc-900 text-[10px] text-zinc-500 uppercase tracking-wider;
+}
+.terminal-status-dot {
+  @apply w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse;
+}
+.terminal-body {
+  @apply flex-1 overflow-y-auto text-[13px] space-y-1.5 py-3 pr-1 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent;
+}
+.terminal-input-field {
+  @apply flex-1 bg-transparent border-none outline-none text-zinc-200 caret-transparent font-mono p-0 text-[13px];
+  @variant focus {
+    @apply ring-0;
+  }
+}
+.terminal-caret {
+  @apply inline-block w-1.5 h-4 bg-purple-500;
+  animation: blink 1s step-end infinite;
+}

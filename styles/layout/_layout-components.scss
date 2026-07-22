@@ -1,0 +1,7 @@
+/* --- Layout Extracted Classes --- */
+.layout-body {
+  @apply min-h-full flex flex-col;
+}
+.layout-html {
+  @apply h-full antialiased font-sans;
+}

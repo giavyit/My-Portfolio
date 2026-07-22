@@ -2,21 +2,27 @@
 @use "./abstracts/variables" as *;
 
 /* 2. Base styles */
+@use "./base/tailwind";
 @use "./base/reset";
 @use "./base/typography";
 @use "./base/base";
+@use "./base/animations";
 
 /* 3. Layout */
 @use "./layout/grid";
 @use "./layout/header";
 @use "./layout/sidebar";
 @use "./layout/footer";
+@use "./layout/layout-components";
 
 /* 4. Components */
 @use "./components/buttons";
 @use "./components/cards";
 @use "./components/forms";
 @use "./components/tables";
+@use "./components/bento";
+@use "./components/insight-ai";
+@use "./components/terminal";
 
 /* 5. Themes (Optional) */
 @use "./themes/light";

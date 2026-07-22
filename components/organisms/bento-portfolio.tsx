@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import { TerminalWidget } from "@/components/molecules/terminal-widget";
 
@@ -162,8 +161,8 @@ export default function BentoPortfolio() {
               <div className="flex justify-between items-center z-10">
                 <div className="bento-badge-available">
                   <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    <span className="bento-badge-ping"></span>
+                    <span className="bento-badge-dot"></span>
                   </span>
                   <span className="bento-badge-text">Available To Work</span>
                 </div>
@@ -417,7 +416,7 @@ export default function BentoPortfolio() {
             {/* CARD 4.2: LET'S WORK TOGETHER */}
             <div className="bento-work-card group">
               {/* Background ambient radial highlight */}
-              <div className="absolute inset-0 bg-gradient-to-t from-purple-500/5 via-transparent to-transparent opacity-30" />
+              <div className="bento-work-highlight" />
 
               {/* Crown Icon */}
               <div className="bento-crown-wrapper">
